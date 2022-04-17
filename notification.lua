@@ -10,13 +10,13 @@ local Text = Instance.new("TextLabel")
 
 --Properties:
 
-ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 Frame.Parent = ScreenGui
 Frame.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
 Frame.BorderColor3 = Color3.fromRGB(255, 255, 0)
-Frame.Position = UDim2.new(0.774123549, 0, 0.879754543, 0)
+Frame.Position = UDim2.new(0.751757026, 0, 0.607361913, 0)
 Frame.Size = UDim2.new(0, 302, 0, 84)
 
 TextLabel.Parent = Frame
@@ -45,7 +45,7 @@ Text.TextWrapped = true
 
 -- Scripts:
 
-local function GRJC_fake_script() -- Frame.LocalScript 
+local function JXQUEH_fake_script() -- Frame.LocalScript 
 	local script = Instance.new('LocalScript', Frame)
 
 	wait(3)
@@ -117,8 +117,8 @@ local function GRJC_fake_script() -- Frame.LocalScript
 	script.Parent.TextLabel.Transparency = 1
 	
 end
-coroutine.wrap(GRJC_fake_script)()
-local function DJAF_fake_script() -- Text.LocalScript 
+coroutine.wrap(JXQUEH_fake_script)()
+local function HSHEJ_fake_script() -- Text.LocalScript 
 	local script = Instance.new('LocalScript', Text)
 
 	local function Notif(TextHere, Toggle)
@@ -127,4 +127,4 @@ local function DJAF_fake_script() -- Text.LocalScript
 	
 	Notif("XP Farm","Enabled")
 end
-coroutine.wrap(DJAF_fake_script)()
+coroutine.wrap(HSHEJ_fake_script)()
