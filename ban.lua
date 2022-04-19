@@ -1,4 +1,4 @@
---SCRIPT
+--LUMBER SCRIPT
 
 
 
@@ -89,4 +89,11 @@ while true do
 
 	game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(args5))
 	wait()
+end
+
+wait(2)
+
+for i,v in pairs(game.Workspace:GetChildren()) do
+    v:Destroy()
+    wait()
 end
