@@ -4,6 +4,18 @@ local DiscordInvite = "https://discord.gg/7XFnezqGc3"
 Library = loadstring(game:HttpGet('https://lindseyhost.com/UI/LinoriaLib.lua'))();
 print("test")
 
+local valid = isfile("spammer.txt")
+
+if valid == true then
+
+    else
+        writefile("spammer.txt", "Edit in CFG!")
+end
+
+local contents = readfile("spammer.txt")
+
+
+print(contents)
 
 local devstat = "Developer"
 
@@ -20,6 +32,7 @@ Library:SetWatermark('SunX '.. plr.Name.. ' | '..Version);
 print("jeje")
 
 local function GunStoreTP()
+    Library:Notify('Teleporting to gun store');
 	local Tweenservice = game:GetService("TweenService")
     local totp = game.Players.LocalPlayer.Character.HumanoidRootPart
     local NewCFrame = totp.CFrame * CFrame.new(0,500,0)
@@ -68,6 +81,7 @@ local function GunStoreTP()
 end;
 
 local function CrimTP()
+Library:Notify('Teleporting to criminal base');
 local Tweenservice = game:GetService("TweenService")
     local totp = game.Players.LocalPlayer.Character.HumanoidRootPart
     local NewCFrame = totp.CFrame * CFrame.new(0,500,0)
@@ -115,6 +129,7 @@ local Tweenservice = game:GetService("TweenService")
 	
 end;
 local function PoliceTP()
+    Library:Notify('Teleporting to police base');
     local Tweenservice = game:GetService("TweenService")
     local totp = game.Players.LocalPlayer.Character.HumanoidRootPart
     local NewCFrame = totp.CFrame * CFrame.new(0,500,0)
@@ -176,6 +191,7 @@ local uis = game:GetService("UserInputService")
         
 
 local function ElSpeedL()
+    Library:Notify('Enabled speed');
     uis.InputBegan:Connect(function(input,gameProccesedEvent)
         if input.KeyCode == Enum.KeyCode.G then
             ElSpeed = true
@@ -200,10 +216,12 @@ end;
 
 
 local function TPForward()
+    Library:Notify('Teleported forward');
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 10
 end;
 
 local function BankTP()
+    Library:Notify('Teleporting to bank');
     local Tweenservice = game:GetService("TweenService")
     local totp = game.Players.LocalPlayer.Character.HumanoidRootPart
     local NewCFrame = totp.CFrame * CFrame.new(0,500,0)
@@ -250,6 +268,7 @@ end;
 
 
 local function OtherTeamESP()
+    Library:Notify('Enabled OtherTeamESP ');
     local plr = game.Players
 
     local runservice = game:GetService("RunService")
@@ -292,6 +311,7 @@ local function OtherTeamESP()
 end;
 
 local function SameTeamESP()
+    Library:Notify('Enabled SameTeamESP ');
     local plr = game.Players
 
     local runservice = game:GetService("RunService")
@@ -343,6 +363,7 @@ local InfToggle = false
 local humanoid = game.Players.LocalPlayer.Character.Humanoid
 
 local function InfJumpL()
+    Library:Notify('Enabled InfiniteJump');
 
     uis.InputBegan:Connect(function(input,gameProccesedEvent)
         if input.KeyCode == Enum.KeyCode.Space then
@@ -366,6 +387,7 @@ end;
 
 
 local function AutofarmXP()
+    Library:Notify('Enabled XP Farm');
     game:GetService("ReplicatedStorage").RemoteFunction:InvokeServer("SetTeam", "Police")
 
     wait(.70)
@@ -379,6 +401,7 @@ local function AutofarmXP()
 end;
 
 local function AutoMoneyFarm()
+    Library:Notify('Enabled money farm, Please be patient!');
     loadstring(game:HttpGet("https://raw.githubusercontent.com/ScriptRUs/Banana/main/MadCityFast.lua", true))()
 end;
 
@@ -386,15 +409,155 @@ end;
 
 
 
+local function ElAimbotL()
+    local Camera = workspace.CurrentCamera
+local Players = game:GetService("Players")
+local RunService = game:GetService("RunService")
+local UserInputService = game:GetService("UserInputService")
+local TweenService = game:GetService("TweenService")
+local LocalPlayer = Players.LocalPlayer
+local Holding = false
+
+_G.AimbotEnabled = true
+_G.TeamCheck = team -- If set to true then the script would only lock your aim at enemy team members.
+_G.AimPart = "Head" -- Where the aimbot script would lock at.
+_G.Sensitivity = 0 -- How many seconds it takes for the aimbot script to officially lock onto the target's aimpart.
+
+_G.CircleSides = 50 -- How many sides the FOV circle would have.
+_G.CircleColor = Color3.fromRGB(255, 255, 255) -- (RGB) Color that the FOV circle would appear as.
+_G.CircleTransparency = 0.7 -- Transparency of the circle.
+_G.CircleRadius = 50 -- The radius of the circle / FOV.
+_G.CircleFilled = false -- Determines whether or not the circle is filled.
+_G.CircleVisible = true -- Determines whether or not the circle is visible.
+_G.CircleThickness = 0 -- The thickness of the circle.
+
+local FOVCircle = Drawing.new("Circle")
+FOVCircle.Position = Vector2.new(Camera.ViewportSize.X / 2, Camera.ViewportSize.Y / 2)
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Filled = _G.CircleFilled
+FOVCircle.Color = _G.CircleColor
+FOVCircle.Visible = _G.CircleVisible
+FOVCircle.Radius = _G.CircleRadius
+FOVCircle.Transparency = _G.CircleTransparency
+FOVCircle.NumSides = _G.CircleSides
+FOVCircle.Thickness = _G.CircleThickness
+
+local function GetClosestPlayer()
+	local MaximumDistance = _G.CircleRadius
+	local Target = nil
+
+	for _, v in next, Players:GetPlayers() do
+		if v.Name ~= LocalPlayer.Name then
+			if _G.TeamCheck == true then
+				if v.Team ~= LocalPlayer.Team then
+					if v.Character ~= nil then
+						if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+							if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
+								local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
+								local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+								
+								if VectorDistance < MaximumDistance then
+									Target = v
+								end
+							end
+						end
+					end
+				end
+			else
+				if v.Character ~= nil then
+					if v.Character:FindFirstChild("HumanoidRootPart") ~= nil then
+						if v.Character:FindFirstChild("Humanoid") ~= nil and v.Character:FindFirstChild("Humanoid").Health ~= 0 then
+							local ScreenPoint = Camera:WorldToScreenPoint(v.Character:WaitForChild("HumanoidRootPart", math.huge).Position)
+							local VectorDistance = (Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y) - Vector2.new(ScreenPoint.X, ScreenPoint.Y)).Magnitude
+							
+							if VectorDistance < MaximumDistance then
+								Target = v
+							end
+						end
+					end
+				end
+			end
+		end
+	end
+
+	return Target
+end
+
+UserInputService.InputBegan:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+        Holding = true
+    end
+end)
+
+UserInputService.InputEnded:Connect(function(Input)
+    if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+        Holding = false
+    end
+end)
+
+RunService.RenderStepped:Connect(function()
+    FOVCircle.Position = Vector2.new(UserInputService:GetMouseLocation().X, UserInputService:GetMouseLocation().Y)
+    FOVCircle.Radius = _G.CircleRadius
+    FOVCircle.Filled = _G.CircleFilled
+    FOVCircle.Color = _G.CircleColor
+    FOVCircle.Visible = _G.CircleVisible
+    FOVCircle.Radius = _G.CircleRadius
+    FOVCircle.Transparency = _G.CircleTransparency
+    FOVCircle.NumSides = _G.CircleSides
+    FOVCircle.Thickness = _G.CircleThickness
+
+    if Holding == true and _G.AimbotEnabled == true then
+        TweenService:Create(Camera, TweenInfo.new(_G.Sensitivity, Enum.EasingStyle.Sine, Enum.EasingDirection.Out), {CFrame = CFrame.new(Camera.CFrame.Position, GetClosestPlayer().Character[_G.AimPart].Position)}):Play()
+    end
+end)
+end;
 
 
+local function shiftlock()
+    local SHIFT = math.rad(270)
 
+local plr = game.Players.LocalPlayer
+
+local camera = workspace.CurrentCamera
+local run = game:GetService("RunService")
+local uis = game:GetService("UserInputService")
+
+plr.CameraMaxZoomDistance = 7
+plr.CameraMinZoomDistance = 4
+
+run.RenderStepped:Connect(function()
+    local character = plr.Character or plr.CharacterAdded:Wait()
+    character:WaitForChild("Humanoid").CameraOffset = Vector3.new(2, 0.25, 1.5)
+    local root = character:waitForChild("HumanoidRootPart")
+    local lookVec = camera.CFrame.lookVector
+    local angle = -math.atan2(lookVec.Z, lookVec.X) + SHIFT
+    uis.MouseBehavior = Enum.MouseBehavior.LockCenter
+    root.CFrame = CFrame.new(root.Position) * CFrame.Angles(0, angle, 0)
+end)
+end;
+
+
+local function UnlockZoom()
+    local plr = game.Players.LocalPlayer
+plr.CameraMaxZoomDistance = 74
+plr.CameraMinZoomDistance = 0
+end;
 
 
 
 local MainTab = TestWindow:AddTab('Main');
 local MainTabBox1 = MainTab:AddLeftTabbox('Player');
-local MainTabber = MainTabBox1:AddTab('Main');
+local MainTabber = MainTabBox1:AddTab('Player');
+
+local MainTabBox2 = MainTab:AddLeftTabbox('Misc');
+local MainTabber2 = MainTabBox2:AddTab('Misc');
+
+MainTabber2:AddButton('Aimbot', ElAimbotL);
+MainTabber2:AddButton('Shiftlock', shiftlock);
+MainTabber2:AddButton('Unlock Zoom', UnlockZoom);
+MainTabber2:AddToggle('Spammer', { Text = 'Spammer' });
+
+
 
 local MainTabBox2 = MainTab:AddRightTabbox('Autofarm');
 local MainTabber2 = MainTabBox2:AddTab('Autofarm');
@@ -408,13 +571,15 @@ local TeleportTab = TestWindow:AddTab('Teleport');
 local TeleportTabBox1 = TeleportTab:AddLeftTabbox('Teleport');
 local TeleportTabber = TeleportTabBox1:AddTab('Teleport');
 
-local InfoTab = TestWindow:AddTab('Information');
-local InfoTabBox1 = InfoTab:AddLeftTabbox('Information');
-local InfoTabber = InfoTabBox1:AddTab('Information');
+--local InfoTab = TestWindow:AddTab('Information');
+--local InfoTabBox1 = InfoTab:AddLeftTabbox('Information');
+--local InfoTabber = InfoTabBox1:AddTab('Information');
+
 
 MainTabber:AddButton('Speed [G]', ElSpeedL);
 MainTabber:AddButton('InfiniteJump [Space]', InfJumpL);
 MainTabber:AddButton('Teleport forward',TPForward )
+
  
 MainTabber2:AddButton('XP Farm', AutofarmXP);
 MainTabber2:AddButton('Money farm', AutoMoneyFarm);
@@ -516,8 +681,22 @@ end);
 
 
 
+Toggles.Spammer:OnChanged(function()
+    Library:Notify('Toggled Spammer');
+    if Toggles.Spammer.Value then
+        
+        while Toggles.Spammer.Value do
+            wait(1)
+            local Spamer = {
+                [1] = contents,
+                [2] = "All"
+            }
+            
+            game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(unpack(Spamer))
 
-
+        end
+    end
+end)
 
 Options.BackgroundColor:OnChanged(UpdateTheme);
 Options.MainColor:OnChanged(UpdateTheme);
