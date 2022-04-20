@@ -1,6 +1,6 @@
 --beta: 1
 local plr = game.Players.LocalPlayer
-local DiscordInvite = "https://discord.gg/7XFnezqGc3"
+local DiscordInvite = "https://discord.gg/aBBr2A8EnE"
 Library = loadstring(game:HttpGet('https://lindseyhost.com/UI/LinoriaLib.lua'))();
 print("test")
 
@@ -410,7 +410,9 @@ end;
 
 
 local function ElAimbotL()
-    local Camera = workspace.CurrentCamera
+    Library:Notify('Enabled Aimbot');
+    
+local Camera = workspace.CurrentCamera
 local Players = game:GetService("Players")
 local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
@@ -514,6 +516,7 @@ end;
 
 
 local function shiftlock()
+    Library:Notify('Unlocked shiftlock');
     local SHIFT = math.rad(270)
 
 local plr = game.Players.LocalPlayer
@@ -538,6 +541,7 @@ end;
 
 
 local function UnlockZoom()
+    Library:Notify('Unlocked Zoom');
     local plr = game.Players.LocalPlayer
 plr.CameraMaxZoomDistance = 74
 plr.CameraMinZoomDistance = 0
@@ -552,10 +556,10 @@ local MainTabber = MainTabBox1:AddTab('Player');
 local MainTabBox2 = MainTab:AddLeftTabbox('Misc');
 local MainTabber2 = MainTabBox2:AddTab('Misc');
 
-MainTabber2:AddButton('Aimbot', ElAimbotL);
-MainTabber2:AddButton('Shiftlock', shiftlock);
-MainTabber2:AddButton('Unlock Zoom', UnlockZoom);
-MainTabber2:AddToggle('Spammer', { Text = 'Spammer' });
+MainTabber2:AddButton('Aimbot', ElAimbotL); --not mine
+MainTabber2:AddButton('Shiftlock', shiftlock); --not mine
+MainTabber2:AddButton('Unlock Zoom', UnlockZoom);--yes, mine
+MainTabber2:AddToggle('Spammer', { Text = 'Spammer' }); --yes, mine
 
 
 
