@@ -19,6 +19,53 @@ local TestWindow = Library:CreateWindow('SunX | '.. plr.Name.. ' | '..Version);
 Library:SetWatermark('SunX '.. plr.Name.. ' | '..Version);
 print("jeje")
 
+local function GunStoreTP()
+	local Tweenservice = game:GetService("TweenService")
+    local totp = game.Players.LocalPlayer.Character.HumanoidRootPart
+    local NewCFrame = totp.CFrame * CFrame.new(0,500,0)
+
+    ToLocation = CFrame.new(-1608, 42, 696)    
+
+    local Info = TweenInfo.new(
+        1,
+        Enum.EasingStyle.Sine,
+        Enum.EasingDirection.In,
+        0,
+        false,
+        0
+    )
+
+    local GoalsQWE = {
+        CFrame = NewCFrame
+    }
+
+    local GoalsRTY = {
+        CFrame = ToLocation
+    }
+
+
+    local FlyUP = Tweenservice:Create(totp,Info,GoalsQWE)
+
+    FlyUP:Play()
+
+
+    local ahmed = 0
+    local ToLocation = Tweenservice:Create(totp,Info,GoalsRTY)
+    while true do
+        wait(0.7)
+        
+        ToLocation:Play()
+        ahmed = ahmed + 1
+        
+        if ahmed == 2 then
+            break
+        end
+    end
+
+	
+	
+	
+end;
 
 local function CrimTP()
 local Tweenservice = game:GetService("TweenService")
@@ -375,6 +422,8 @@ MainTabber2:AddButton('Money farm', AutoMoneyFarm);
 TeleportTabber:AddButton('Police',PoliceTP )
 TeleportTabber:AddButton('Bank',BankTP )
 TeleportTabber:AddButton('Crim',CrimTP )
+TeleportTabber:AddButton('Gun store',GunStoreTP )
+
 
 VisualsTabber:AddButton('[ESP] Other teams',OtherTeamESP )
 VisualsTabber:AddButton('[ESP] Same team',SameTeamESP )
