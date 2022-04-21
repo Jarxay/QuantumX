@@ -754,6 +754,14 @@ local function ZoomSpeed1()
 	end)
 end;
 
+local function PoliceAimbot()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Jarxay/SunX/main/PoliceAimbotMadCity"))()
+end;
+
+local function HeroAimbot()
+    --https://github.com/Jarxay/SunX/blob/main/HeroAimbotMadcity
+    loadstring(game:HttpGet("https://github.com/Jarxay/SunX/blob/main/HeroAimbotMadcity"))()
+end;
 
 local function ZoomSpeed()
 	Library:Notify("z o o m")
@@ -770,8 +778,14 @@ local MainTab = TestWindow:AddTab('Main');
 local MainTabBox1 = MainTab:AddLeftTabbox('Player');
 local MainTabber = MainTabBox1:AddTab('Player');
 
-local MainTabBox2 = MainTab:AddLeftTabbox('Misc');
+local MainTabBox2 = MainTab:AddRightTabbox('Misc');
 local MainTabber2 = MainTabBox2:AddTab('Misc');
+
+local MainTabBox3 = MainTab:AddLeftTabbox('Aimbot');
+local MainTabber3 = MainTabBox3:AddTab('Aimbot');
+
+MainTabber3:AddButton('police aimbot', PoliceAimbot); --not mine
+MainTabber3:AddButton('hero aimbot', HeroAimbot); --not mine
 
 MainTabber2:AddButton('Aimbot', ElAimbotL); --not mine
 MainTabber2:AddButton('Shiftlock', shiftlock); --not mine
