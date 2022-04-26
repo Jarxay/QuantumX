@@ -380,15 +380,6 @@ end;
 
 
 
-local function ModuleSpeed()
-    SpeedTP()
-    SpeedTP()
-end;
-
-
-
-
-
 local function SpeedTP()
     local plr = game.Players.LocalPlayer
     local speed =false
@@ -419,6 +410,15 @@ local function SpeedTP()
     end)
 
 end;
+
+local function ModuleSpeed()
+    SpeedTP()
+    SpeedTP()
+end;
+
+
+
+
 
 
 
@@ -794,7 +794,6 @@ end)
 
 UpdateTheme()
 Library:Notify('Made by Jarxay#0001 | '.. DiscordInvite);
-
 
 
 
