@@ -1,7 +1,7 @@
 --MGU Made by jarxay
 
 local DiscordInvite = "https://discord.gg/7XFnezqGc3"
-local Version = "Release: ".. "Developer"
+local Version = "Release: ".. "Public"
 Library = loadstring(game:HttpGet('https://lindseyhost.com/UI/LinoriaLib.lua'))();
 Library:Notify('e')
 local plr = game:GetService("Players").LocalPlayer
@@ -10,7 +10,7 @@ local Fonts = {};
 for Font, _ in next, Drawing.Fonts do
 	table.insert(Fonts, Font);
 end;
-local TestWindow = Library:CreateWindow('QuantumX | '.. plr.Name.. ' | '..Version);
+local TestWindow = Library:CreateWindow('QuantumX | '.. Version);
 Library:SetWatermark('QuantumX | '.. plr.Name.. ' | '..Version);
 Library:Notify('Loading UI...');
 
@@ -696,7 +696,7 @@ VisualsTabber:AddButton('[Police] ChamsESP', PoliceCham)
 VisualsTabber:AddButton('[Police] Tracers', PoliceTracer)
 VisualsTabber2:AddButton('[Criminal] Tracers',Civtracers)
 VisualsTabber2:AddButton('[Criminal] Chams',CrimCham)
-PlayerTabber:AddButton('[G] Speed', SpeedTP)
+PlayerTabber:AddButton('[G] Speed', ModuleSpeed)
 
 --delesp
 --MainTabber:AddToggle('Dupe', { Text = 'Dupe' }); --yes, mine
