@@ -9,7 +9,7 @@ local valid = isfile("spammer.txt")
 if valid == true then
 
 else
-	writefile("spammer.txt", "Edit in CFG!")
+	writefile("spammer.txt", "Script by jarxay!")
 end
 
 local contents = readfile("spammer.txt")
@@ -27,8 +27,8 @@ local Fonts = {};
 for Font, _ in next, Drawing.Fonts do
 	table.insert(Fonts, Font);
 end;
-local TestWindow = Library:CreateWindow('SunX | '.. plr.Name.. ' | '..Version);
-Library:SetWatermark('SunX '.. plr.Name.. ' | '..Version);
+local TestWindow = Library:CreateWindow('QuantumX | '.. plr.Name.. ' | '..Version);
+Library:SetWatermark('QuantumX '.. plr.Name.. ' | '..Version);
 print("jeje")
 
 local function GunStoreTP()
@@ -93,7 +93,7 @@ repeat
 		--The first argument of SetCore is the method we wish to use
 		--In this case, the second argument is a dictionary of data for the chat message
 		StarterGui:SetCore("ChatMakeSystemMessage", {
-			Text = "SunX scripted by jarxay <3"; --The chat message
+			Text = "QuantumX scripted by jarxay <3"; --The chat message
 			Color = Color3.fromRGB(0, 255, 255); --Chat message color, defaults to white
 			Font = Enum.Font.SourceSansBold; --Chat message font, defaults to SourceSansBold
 			TextSize = 18 --Text size, defaults to 18
@@ -755,12 +755,12 @@ local function ZoomSpeed1()
 end;
 
 local function PoliceAimbot()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Jarxay/SunX/main/PoliceAimbotMadCity"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Jarxay/QuantumX/main/PoliceAimbotMadCity"))()
 end;
 
 local function HeroAimbot()
-    --https://github.com/Jarxay/SunX/blob/main/HeroAimbotMadcity
-    loadstring(game:HttpGet("https://github.com/Jarxay/SunX/blob/main/HeroAimbotMadcity"))()
+    --https://github.com/Jarxay/QuantumX/blob/main/HeroAimbotMadcity
+    loadstring(game:HttpGet("https://github.com/Jarxay/QuantumX/blob/main/HeroAimbotMadcity"))()
 end;
 
 local function ZoomSpeed()
