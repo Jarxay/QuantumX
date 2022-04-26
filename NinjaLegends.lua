@@ -15,7 +15,7 @@ uis.InputBegan:Connect(function(input,gameProccesedEvent)
     end
 end)
 
-local DiscordInvite = "https://discord.gg/7XFnezqGc3"
+local DiscordInvite = "https://discord.gg/bvDNG8wgCD"
 local Version = "Release: ".. 2.3
 Library = loadstring(game:HttpGet('https://lindseyhost.com/UI/LinoriaLib.lua'))();
 Library:Notify('e')
