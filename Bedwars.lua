@@ -432,14 +432,14 @@ local uis = game:GetService("UserInputService")
 
 local function KKK()
     uis.InputBegan:Connect(function(input,gameProccesed)
-    if input.KeyCode == Enum.KeyCode.B then
+    if input.KeyCode == Enum.KeyCode.G then
         local SpeedQ = 0
         local SpeedW = 0
-        
         while wait(0.0025) do
-            game.Players.LocalPlayer.Character.Humanoid.Jump = true
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 3
-            game.Workspace.Gravity = 20
+            
+
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 3.3
+            game.Workspace.Gravity = 4
             SpeedW = SpeedW + 1
             
             if SpeedW == 5 then
@@ -623,7 +623,6 @@ end)
 
 UpdateTheme()
 Library:Notify('Made by Jarxay#0001 | '.. DiscordInvite);
-
 
 
 
