@@ -438,7 +438,7 @@ local function KKK()
         while wait(0.0025) do
             
 
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 3.3
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame + game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.lookVector * 3.4
             game.Workspace.Gravity = 4
             SpeedW = SpeedW + 1
             
@@ -522,7 +522,7 @@ local MainTabber2 = MainTabBox2:AddTab('Misc');
 local SettingsTab = TestWindow:AddTab('Settings');
 
 
-MainTabber:AddButton('Flight/Speed', SpeedLOL)
+MainTabber:AddButton('Longjump (G) ', SpeedLOL)
 
 MainTabber2:AddToggle('Spammer', { Text = 'Spammer' }); --yes, mine
 VisualsTabber:AddButton('ChamsESP', ChamESP)
