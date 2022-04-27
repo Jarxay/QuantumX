@@ -28,6 +28,53 @@ local contents = readfile("spammer.txt")
 
 
 
+local function RemoveTextures()
+local decalsyeeted = false -- Leaving this on makes games look shitty but the fps goes up by at least 20.
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = false
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for i, v in pairs(g:GetDescendants()) do
+    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+    elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+        v.Transparency = 1
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+        v.Lifetime = NumberRange.new(0)
+    elseif v:IsA("Explosion") then
+        v.BlastPressure = 1
+        v.BlastRadius = 1
+    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+        v.Enabled = false
+    elseif v:IsA("MeshPart") then
+        v.Material = "Plastic"
+        v.Reflectance = 0
+        v.TextureID = 10385902758728957
+    end
+end
+for i, e in pairs(l:GetChildren()) do
+    if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+        e.Enabled = false
+    end
+end
+end;
+
+
+
+
+
+
+
+
 
 
 
@@ -239,7 +286,7 @@ local function Aimbot()
 	_G.CircleSides = 50 -- How many sides the FOV circle would have.
 	_G.CircleColor = Color3.fromRGB(255, 255, 255) -- (RGB) Color that the FOV circle would appear as.
 	_G.CircleTransparency = 0.7 -- Transparency of the circle.
-	_G.CircleRadius = 35 -- The radius of the circle / FOV.
+	_G.CircleRadius = 60 -- The radius of the circle / FOV.
 	_G.CircleFilled = false -- Determines whether or not the circle is filled.
 	_G.CircleVisible = true -- Determines whether or not the circle is visible.
 	_G.CircleThickness = 0 -- The thickness of the circle.
@@ -460,7 +507,7 @@ local function PoliceCham()
 
 	while wait(0.1) do
 		for i,v in pairs(plr:GetPlayers()) do
-			if v.Name ~= plr.LocalPlayer.Name and v.TeamColor == BrickColor.new("Medium blue") and v.Name ~= plr.Name and v.Character:FindFirstChild("Head") and v.Character.Head:FindFirstChild("cham") == nil then
+			if v.Name ~= plr.LocalPlayer.Name and v.TeamColor == BrickColor.new("Medium blue") or v.TeamColor == BrickColor.new("Linen") and v.Name ~= plr.Name and v.Character:FindFirstChild("Head") and v.Character.Head:FindFirstChild("cham") == nil then
 				for i,v in pairs(v.Character:GetChildren()) do
 					if v:IsA("MeshPart") or v.Name == "Head" then
 						CreateGui("cham",v,"Back")
@@ -475,6 +522,8 @@ local function PoliceCham()
 		end
 	end--]]
 end;
+
+
 
 
 
@@ -550,7 +599,7 @@ local function CriminalAimbot()
 	_G.CircleSides = 50 -- How many sides the FOV circle would have.
 	_G.CircleColor = Color3.fromRGB(255, 255, 255) -- (RGB) Color that the FOV circle would appear as.
 	_G.CircleTransparency = 0.7 -- Transparency of the circle.
-	_G.CircleRadius = 35 -- The radius of the circle / FOV.
+	_G.CircleRadius = 60 -- The radius of the circle / FOV.
 	_G.CircleFilled = false -- Determines whether or not the circle is filled.
 	_G.CircleVisible = true -- Determines whether or not the circle is visible.
 	_G.CircleThickness = 0 -- The thickness of the circle.
@@ -668,9 +717,44 @@ end;
 
 
 
+local function SpawnTP()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-525, 23, 656)
+end;
+local function BankTP()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-1003, 23, 428)
+end;
+
+local function JewleryTP()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-460, 23, -409)
+end;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 local MainTab = TestWindow:AddTab('Main');
+local VisualsTab = TestWindow:AddTab('Visuals');
 local PlayerTab = TestWindow:AddTab('Player');
+local TeleportTab = TestWindow:AddTab('Teleport');
 
 local PlayerTabBox1 = PlayerTab:AddLeftTabbox('Combat');
 local PlayerTabber = PlayerTabBox1:AddTab('Combat');
@@ -680,10 +764,31 @@ local PlayerTabber = PlayerTabBox1:AddTab('Combat');
 local MainTabBox1 = MainTab:AddLeftTabbox('Combat');
 local MainTabber = MainTabBox1:AddTab('Combat');
 
-local VisualsTabBox1 = MainTab:AddRightTabbox('Police');
+
+local TeleportTabBox1 = TeleportTab:AddLeftTabbox('Teleport');
+local TeleportTabber = TeleportTabBox1:AddTab('Teleport');
+
+
+TeleportTabber:AddButton('[TP] Spawn', SpawnTP)
+TeleportTabber:AddButton('[TP] Bank', BankTP)
+TeleportTabber:AddButton('[TP] Jewlery', JewleryTP)
+
+
+
+
+
+
+
+
+
+
+
+
+
+local VisualsTabBox1 = VisualsTab:AddLeftTabbox('Police');
 local VisualsTabber = VisualsTabBox1:AddTab('Police');
 
-local VisualsTabBox2 = MainTab:AddRightTabbox('Criminal');
+local VisualsTabBox2 = VisualsTab:AddRightTabbox('Criminal');
 local VisualsTabber2 = VisualsTabBox2:AddTab('Criminal');
 
 local SettingsTab = TestWindow:AddTab('Settings');
@@ -723,7 +828,7 @@ local function SetDefault()
 
     UpdateTheme();
 end;
-Library:Notify('Half loaded UI!');
+
 local Theme = SettingsTab:AddLeftGroupbox('Theme');
 Theme:AddLabel('Background Color'):AddColorPicker('BackgroundColor', { Default = Library.BackgroundColor });
 Theme:AddLabel('Main Color'):AddColorPicker('MainColor', { Default = Library.MainColor });
@@ -736,6 +841,7 @@ Theme:AddToggle('Watermark', { Text = 'Show Watermark', Default = true }):OnChan
     Library:SetWatermarkVisibility(Toggles.Watermark.Value);
 end);
 
+Theme:AddButton('Remove textures',RemoveTextures)
 task.spawn(function()
     while game:GetService('RunService').RenderStepped:Wait() do
         if Toggles.Rainbow.Value then
@@ -794,6 +900,5 @@ end)
 
 UpdateTheme()
 Library:Notify('Made by Jarxay#0001 | '.. DiscordInvite);
-
 
 
